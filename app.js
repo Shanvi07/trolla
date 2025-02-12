@@ -7,7 +7,7 @@ const contactRoutes = require("./routes/contactRoutes");
 const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
-
+const MongoStore = require("connect-mongo");
 
 // Use flash middleware
 
@@ -23,6 +23,9 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,  // Use your MongoDB URI here
+    }),
     cookie: { secure: false } // Set secure to true if using HTTPS
 }));
 
