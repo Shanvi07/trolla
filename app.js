@@ -59,7 +59,5 @@ app.get("/services", (req, res) => {
     res.render("profile", { title: "profile" });
   });
  
-  app.listen(3001, () => {
-      console.log(`Server is running on port ${3001}`);
-  });
+module.exports=app;
   
