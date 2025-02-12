@@ -229,7 +229,7 @@
             </div>
     
         </div>
-    
+       
         <!-- Directors Section -->
         <div class="max-w-6xl mx-auto py-20">
             <h3 class="text-3xl font-bold text-center mb-16 text-[#FA472D]">Our Directors</h3>
@@ -288,21 +288,13 @@
     <!-- GSAP Animation Script -->
    
     
+  <!-- Custom Section -->
+ 
 
-    <script>
-        gsap.from(".animate", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
-      
-        gsap.from(".animate", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
-    
-        // About Us Animations
-        gsap.from(".about-img", { opacity: 0, scale: 0.9, duration: 1, delay: 0.5 });
-        gsap.from(".about-icon", { opacity: 0, scale: 0, duration: 1, delay: 0.8 });
-        gsap.from(".about-text", { opacity: 0, x: -50, duration: 1, stagger: 0.3, delay: 1 });
-    
-        // Directors Section Animations
-        gsap.from(".director-card", { opacity: 0, y: 50, duration: 1, stagger: 0.3, delay: 1.5 });
-    
-    </script>
+ 
+
+  
+
 
 <footer id="bottom" class="bg-[#1F0906] text-white py-6">
     <div id="footer" class="container mx-auto">
@@ -418,7 +410,46 @@
 
     <!-- Optional: Additional JavaScript (For example, GSAP, custom JS, etc.) -->
     <script>
-   
+        gsap.from(".animate", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
+      
+        gsap.from(".animate", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
+    
+        // About Us Animations
+        gsap.from(".about-img", { opacity: 0, scale: 0.9, duration: 1, delay: 0.5 });
+        gsap.from(".about-icon", { opacity: 0, scale: 0, duration: 1, delay: 0.8 });
+        gsap.from(".about-text", { opacity: 0, x: -50, duration: 1, stagger: 0.3, delay: 1 });
+    
+        // Directors Section Animations
+        gsap.from(".director-card", { opacity: 0, y: 50, duration: 1, stagger: 0.3, delay: 1.5 });
+    
+
+        const sliderMask = document.getElementById('slider-mask');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.podcast-slide');
+    const totalSlides = slides.length;
+
+    // GSAP animations for smooth slide transitions
+    function moveSlider() {
+      gsap.to(sliderMask, {
+        x: -currentSlide * 100 + '%',
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
+    }
+
+    // Show the previous slide
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+      moveSlider();
+    });
+
+    // Show the next slide
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide === totalSlides - 1) ? 0 : currentSlide + 1;
+      moveSlider();
+    });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </body>

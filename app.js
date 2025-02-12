@@ -32,7 +32,7 @@ app.use(session({
 app.use(flash());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-
+app.use(express.static("public"));
 // Routes
 app.use(authRoutes);
 app.use(contactRoutes);
