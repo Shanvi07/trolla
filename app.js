@@ -16,11 +16,11 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true}));
 
 
 app.use(session({
-    secret: 'your-secret-key',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // Set secure to true if using HTTPS
@@ -55,6 +55,8 @@ app.get("/services", (req, res) => {
   app.get("/profile", (req, res) => {
     res.render("profile", { title: "profile" });
   });
-  module.exports = app;
-
+ 
+  app.listen(3001, () => {
+      console.log(`Server is running on port ${3001}`);
+  });
   

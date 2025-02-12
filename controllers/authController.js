@@ -15,7 +15,9 @@ exports.postRegister = async (req, res) => {
         req.flash("message", "User already exists!");
         return res.redirect("/register");
     }
-
+else{
+    res.redirect("/")
+}
     user = new User({ name, email, password });
 
     try {
